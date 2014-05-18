@@ -1,0 +1,12 @@
+{
+	"id": "nodebb-plugin-homepage-api",
+	"name": "Custom Homepage API for NodeBB",
+	"description": "Allows you to re-define the homepage API call for NodeBB",
+	"url": "https://github.com/psychobunny/nodebb-plugin-homepage-api",
+	"library": "./library.js",
+	"hooks": [
+		{
+			"hook": "action:app.load", "method": "init", "callbacked": true
+		}
+	]
+}
