@@ -42,14 +42,10 @@
 			},
 			categories: function (next) {
 				var uid = req.user ? req.user.uid : 0;
-				categories.getAllCategories(uid, function (err, data) {
+				categories.getVisibleCategories(uid, function (err, categoryData) {
 					if (err) {
 						return next(err);
 					}
-
-					data.categories = data.categories.filter(function (category) {
-						return !category.disabled;
-					});
 
 					/*
 					* This is the modified function for getting category topics, instead of category posts
@@ -63,17 +59,9 @@
 						});
 					}
 
-					async.filter(data.categories, function (category, next) {
-						privileges.categories.can('read', category.cid, uid, function(err, canRead) {
-							next(!err && canRead);
-						});
-					}, function(visibleCategories) {
-						data.categories = visibleCategories;
-
-						async.each(data.categories, getRecentTopics, function (err) {
-							next(err, data.categories);
-						});
-					});
+					async.each(categoryData, getRecentTopics, function (err) {
+						next(err, categoryData);
+ 					});
 				});
 			}
 		}, function (err, data) {
