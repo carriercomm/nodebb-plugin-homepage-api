@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-homepage-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Allows you to re-define the homepage API call for NodeBB",
   "main": "library.js",
   "scripts": {
