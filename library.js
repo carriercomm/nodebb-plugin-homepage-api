@@ -69,8 +69,9 @@
 		});
 	}
 
-	Plugin.init = function(app, middleware, controllers) {
-		app.get('/api/home', renderHomepage);
+	Plugin.init = function(params, callback) {
+		params.get('/api/home', renderHomepage);
+		callback();
 	};
 
 	module.exports = Plugin;

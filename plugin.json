@@ -6,7 +6,7 @@
 	"library": "./library.js",
 	"hooks": [
 		{
-			"hook": "action:app.load", "method": "init", "callbacked": true
+			"hook": "static:app.load", "method": "init"
 		}
 	]
 }
